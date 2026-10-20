@@ -21,4 +21,11 @@ public class EventoService {
     public List<Evento> listarTodos() {
         return repository.findAll();
     }
+    public Evento buscarPorId(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public void excluir(Long id) {
+        repository.deleteById(id);
+    }
 }

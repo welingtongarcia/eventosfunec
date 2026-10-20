@@ -37,6 +37,14 @@
                                 <td th:text="${evento.hora}"></td>
                                 <td th:text="${evento.local}"></td>
                                 <td><span class="vagas" th:text="${evento.quantidadeVagas}"></span></td>
+                                <td>
+                                    <a class="botao editar" th:href="@{/eventos/editar/{id}(id=${evento.id})}">
+                                        Editar
+                                    </a>
+                                    <a class="botao excluir" th:href="@{/eventos/excluir/{id}(id=${evento.id})}">
+                                        Excluir
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

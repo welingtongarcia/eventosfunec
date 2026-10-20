@@ -9,9 +9,15 @@
         <main class="pagina-cadastro">
             <section class="cartao-cadastro">
                 <a class="voltar" th:href="@{/eventos}">&larr; Voltar para eventos</a>
-                <h1>Cadastro de evento</h1>
+                <h1
+                    th:text="${evento.id == null
+                    ? 'Cadastro de Evento'
+                    : 'Editar Evento'}">
+                    Cadastro de Evento
+                </h1>
                 <p class="subtitulo">Preencha os dados abaixo para publicar um novo evento.</p>
                 <form th:action="@{/eventos/salvar}" th:object="${evento}" method="post">
+                    <input type="hidden" th:field="*{id}">
                     <div class="campo campo-completo">
                         <label for="titulo">Título</label>
                         <input id="titulo" type="text" th:field="*{titulo}" placeholder="Ex.: Workshop de Java">
@@ -46,7 +52,13 @@
                             <span class="erro" th:errors="*{quantidadeVagas}"></span>
                         </div>
                     </div>
-                    <button type="submit">Salvar evento</button>
+                    <button
+                        type="submit"
+                        th:text="${evento.id == null
+                        ? 'Salvar Evento'
+                        : 'Salvar Alterações'}">
+                        Salvar Evento
+                    </button>
                 </form>
             </section>
         </main>

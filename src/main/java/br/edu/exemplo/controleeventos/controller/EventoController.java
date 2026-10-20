@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class EventoController {
@@ -17,9 +18,10 @@ public class EventoController {
         this.eventoService = eventoService;
     }
 
-    @GetMapping({"/", "/eventos"})
+    @GetMapping("/eventos")
     public String listarEventos(Model model) {
-        model.addAttribute("eventos", eventoService.listarTodos());
+        model.addAttribute("eventos", eventoService.listarTodos()
+        );
         return "lista-eventos";
     }
 
@@ -38,5 +40,15 @@ public class EventoController {
         }
         eventoService.salvar(evento);
         return "redirect:/eventos";
+    }
+
+    @GetMapping("/eventos/editar/{id}")
+    public String editarEvento(@PathVariable Long id, Model model) {
+        Evento evento = eventoService.buscarPorId(id);
+        if (evento == null) {
+            return "redirect:/eventos";
+        }
+        model.addAttribute("evento", evento);
+        return "form-evento";
     }
 }
