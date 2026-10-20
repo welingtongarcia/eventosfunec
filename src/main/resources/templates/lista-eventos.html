@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Eventos</title>
+        <link rel="stylesheet" th:href="@{/css/lista-eventos.css}">
+    </head>
+    <body>
+        <main class="pagina-listagem">
+            <header class="cabecalho">
+                <div>
+                    <p class="eyebrow">Controle de eventos</p>
+                    <h1>Eventos cadastrados</h1>
+                    <p class="subtitulo">Acompanhe os próximos eventos em um só lugar.</p>
+                </div>
+                <a class="botao-novo" th:href="@{/eventos/novo}">+ Novo evento</a>
+            </header>
+
+            <section class="cartao-lista" th:if="${!#lists.isEmpty(eventos)}">
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Local</th>
+                                <th>Vagas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="evento : ${eventos}">
+                                <td class="titulo-evento" th:text="${evento.titulo}"></td>
+                                <td th:text="${evento.descricao}"></td>
+                                <td th:text="${evento.data}"></td>
+                                <td th:text="${evento.hora}"></td>
+                                <td th:text="${evento.local}"></td>
+                                <td><span class="vagas" th:text="${evento.quantidadeVagas}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="estado-vazio" th:if="${#lists.isEmpty(eventos)}">
+                <h2>Nenhum evento cadastrado</h2>
+                <p>Comece criando o primeiro evento da sua agenda.</p>
+                <a class="botao-novo" th:href="@{/eventos/novo}">Cadastrar evento</a>
+            </section>
+        </main>
+    </body>
+</html>
