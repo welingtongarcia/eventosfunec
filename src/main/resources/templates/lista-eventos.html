@@ -41,7 +41,9 @@
                                     <a class="botao editar" th:href="@{/eventos/editar/{id}(id=${evento.id})}">
                                         Editar
                                     </a>
-                                    <a class="botao excluir" th:href="@{/eventos/excluir/{id}(id=${evento.id})}">
+                                    <a
+                                        class="botao excluir" th:href="@{/eventos/excluir/{id}(id=${evento.id})}"
+                                        onclick="return confirm('Deseja realmente excluir este evento?');">
                                         Excluir
                                     </a>
                                 </td>

@@ -1,0 +1,44 @@
+:root {
+    --primaria: #2563eb;
+    --primaria-escura: #1d4ed8;
+    --texto: #172033;
+    --texto-suave: #64748b;
+    --borda: #dce6f2;
+    --fundo: #f4f7fb;
+}
+
+* { box-sizing: border-box; }
+
+body { min-height: 100vh; margin: 0; background: var(--fundo); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+.pagina-participantes { width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 52px 0; }
+.cabecalho { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.eyebrow { margin: 0 0 8px; color: var(--primaria); font-size: .8rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.subtitulo { margin: 8px 0 0; color: var(--texto-suave); }
+
+.botao-novo { display: inline-block; padding: 12px 18px; border-radius: 8px; background: var(--primaria); color: #fff; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.botao-novo:hover { background: var(--primaria-escura); }
+.cartao-lista, .vazio { background: #fff; border: 1px solid var(--borda); border-radius: 14px; box-shadow: 0 10px 30px rgba(37, 99, 235, .07); }
+.tabela-responsiva { overflow-x: auto; }
+table { width: 100%; min-width: 780px; border-collapse: collapse; }
+th, td { padding: 17px 20px; border-bottom: 1px solid var(--borda); text-align: left; }
+th { background: #f7faff; color: #475569; font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #f7faff; }
+.nome-participante { font-weight: 700; }
+.coluna-acoes { text-align: right; }
+.acoes-tabela { display: flex; justify-content: flex-end; gap: 8px; }
+.acao { padding: 7px 10px; border-radius: 6px; font-size: .85rem; font-weight: 700; text-decoration: none; }
+.editar { background: #dbeafe; color: #1d4ed8; }
+.excluir { background: #fee2e2; color: #b91c1c; }
+.acao:hover { filter: brightness(.95); }
+
+.vazio { padding: 58px 24px; text-align: center; }
+.vazio h2 { margin: 0 0 8px; }
+.vazio p { margin: 0 0 24px; color: var(--texto-suave); }
+
+@media (max-width: 640px) {
+    .pagina-participantes { width: min(100% - 28px, 1180px); padding: 30px 0; }
+    .cabecalho { align-items: flex-start; flex-direction: column; }
+    .botao-novo { width: 100%; text-align: center; }
+}

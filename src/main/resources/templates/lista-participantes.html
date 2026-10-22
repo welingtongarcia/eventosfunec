@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Participantes</title>
+        <link rel="stylesheet" th:href="@{/css/lista-participantes.css}">
+    </head>
+    <body>
+        <main class="pagina-participantes">
+            <div class="cabecalho">
+                <div>
+                    <p class="eyebrow">Controle de eventos</p>
+                    <h1>Participantes cadastrados</h1>
+                    <p class="subtitulo">Gerencie os dados de todos os participantes.</p>
+                </div>
+                <a class="botao-novo" th:href="@{/participantes/novo}">+ Novo participante</a>
+            </div>
+            <section class="cartao-lista" th:unless="${#lists.isEmpty(participantes)}">
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Documento</th>
+                                <th class="coluna-acoes">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="participante : ${participantes}">
+                                <td class="nome-participante" th:text="${participante.nome}"></td>
+                                <td th:text="${participante.email}"></td>
+                                <td th:text="${participante.telefone}"></td>
+                                <td th:text="${participante.documento}"></td>
+                                <td class="acoes-tabela">
+                                    <a class="acao editar" th:href="@{/participantes/editar/{id}(id=${participante.id})}">
+                                Editar
+                                    </a>
+                                    <a class="acao excluir" th:href="@{/participantes/excluir/{id}(id=${participante.id})}"
+                                       onclick="return confirm('Deseja realmente excluir este participante?');">
+                                Excluir
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section th:if="${#lists.isEmpty(participantes)}" class="vazio">
+                <h2>Nenhum participante cadastrado</h2>
+                <p>Adicione pessoas para manter seus dados organizados.</p>
+                <a class="botao-novo" th:href="@{/participantes/novo}">Cadastrar participante</a>
+            </section>
+        </main>
+    </body>
+</html>

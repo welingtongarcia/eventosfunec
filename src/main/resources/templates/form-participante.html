@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Participante</title>
+        <link rel="stylesheet" th:href="@{/css/form-participante.css}">
+    </head>
+    <body>
+        <main class="pagina-participante">
+            <section class="cartao-participante">
+                <a class="voltar" th:href="@{/participantes}">&larr; Voltar para participantes</a>
+                <h1 th:text="${participante.id == null ? 'Cadastro de participante' : 'Editar participante'}">
+                    Cadastro de participante
+                </h1>
+                <p class="subtitulo">Informe os dados de contato do participante.</p>
+                <form th:action="@{/participantes/salvar}" th:object="${participante}" method="post">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="campo campo-completo">
+                        <label for="nome">Nome completo</label>
+                        <input id="nome" type="text" th:field="*{nome}" placeholder="Ex.: Ana Souza">
+                        <span class="erro" th:errors="*{nome}"></span>
+                    </div>
+                    <div class="linha-campos">
+                        <div class="campo">
+                            <label for="email">E-mail</label>
+                            <input id="email" type="email" th:field="*{email}" placeholder="ana@email.com">
+                            <span class="erro" th:errors="*{email}"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="telefone">Telefone</label>
+                            <input id="telefone" type="tel" th:field="*{telefone}" placeholder="(00) 00000-0000">
+                            <span class="erro" th:errors="*{telefone}"></span>
+                        </div>
+                    </div>
+                    <div class="campo campo-completo">
+                        <label for="documento">Documento</label>
+                        <input id="documento" type="text" th:field="*{documento}" placeholder="CPF ou RG">
+                        <span class="erro" th:errors="*{documento}"></span>
+                    </div>
+                    <div class="acoes-formulario">
+                        <a class="botao-secundario" th:href="@{/participantes}">Cancelar</a>
+                        <button type="submit">Salvar participante</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

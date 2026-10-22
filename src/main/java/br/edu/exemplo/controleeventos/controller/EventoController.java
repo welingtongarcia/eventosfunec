@@ -51,4 +51,10 @@ public class EventoController {
         model.addAttribute("evento", evento);
         return "form-evento";
     }
+
+    @GetMapping("/eventos/excluir/{id}")
+    public String excluirEvento(@PathVariable Long id) {
+        eventoService.excluir(id);
+        return "redirect:/eventos";
+    }
 }
