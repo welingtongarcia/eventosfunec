@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nova inscrição</title>
+        <link rel="stylesheet" th:href="@{/css/form-inscricao.css}">
+    </head>
+    <body>
+        <main class="pagina-inscricao">
+            <section class="cartao-inscricao">
+                <a class="voltar" th:href="@{/inscricoes}">&larr; Voltar para inscrições</a>
+                <h1>Nova inscrição</h1>
+                <p class="subtitulo">Vincule um participante a um evento.</p>
+                <form th:action="@{/inscricoes/salvar}" th:object="${inscricao}" method="post">
+                    <div class="campo">
+                        <label for="evento">Evento</label>
+                        <select id="evento" th:field="*{evento}" required>
+                            <option value="">Selecione um evento</option>
+                            <option th:each="evento : ${eventos}"
+                                    th:value="${evento.id}"
+                                    th:text="${evento.titulo}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="participante">Participante</label>
+                        <select id="participante" th:field="*{participante}" required>
+                            <option value="">Selecione um participante</option>
+                            <option th:each="participante : ${participantes}"
+                                    th:value="${participante.id}"
+                                    th:text="${participante.nome}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="acoes-formulario">
+                        <a class="botao-secundario" th:href="@{/inscricoes}">Cancelar</a>
+                        <button type="submit">Salvar inscrição</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

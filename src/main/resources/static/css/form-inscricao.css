@@ -1,0 +1,36 @@
+:root {
+    --azul: #2563eb;
+    --azul-escuro: #1d4ed8;
+    --texto: #172033;
+    --texto-suave: #64748b;
+    --borda: #d9e1ee;
+    --fundo: #f4f7fb;
+}
+
+* { box-sizing: border-box; }
+
+body { min-height: 100vh; margin: 0; background: linear-gradient(135deg, #eff6ff, var(--fundo)); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+.pagina-inscricao { display: grid; min-height: 100vh; padding: 40px 20px; place-items: center; }
+.cartao-inscricao { width: min(100%, 650px); padding: 38px; background: #fff; border: 1px solid #e1e9f5; border-radius: 18px; box-shadow: 0 18px 45px rgba(37, 99, 235, .12); }
+.voltar { color: var(--azul); font-size: .9rem; text-decoration: none; }
+.voltar:hover { text-decoration: underline; }
+h1 { margin: 18px 0 8px; font-size: clamp(1.75rem, 4vw, 2.25rem); }
+.subtitulo { margin: 0 0 28px; color: var(--texto-suave); }
+form { display: grid; gap: 22px; }
+.campo { display: grid; gap: 7px; }
+label { font-size: .9rem; font-weight: 700; }
+select { width: 100%; padding: 12px 13px; border: 1px solid var(--borda); border-radius: 8px; background: #fff; color: var(--texto); font: inherit; outline: none; }
+select:focus { border-color: var(--azul); box-shadow: 0 0 0 3px rgba(37, 99, 235, .14); }
+.acoes-formulario { display: flex; justify-content: flex-end; gap: 12px; }
+button, .botao-secundario { padding: 12px 20px; border-radius: 8px; font: inherit; font-weight: 700; text-decoration: none; }
+button { border: 0; background: var(--azul); color: #fff; cursor: pointer; }
+button:hover { background: var(--azul-escuro); }
+.botao-secundario { border: 1px solid var(--borda); color: #475569; }
+.botao-secundario:hover { background: #f8fafc; }
+
+@media (max-width: 600px) {
+    .pagina-inscricao { padding: 18px 12px; }
+    .cartao-inscricao { padding: 25px 20px; }
+    .acoes-formulario { flex-direction: column-reverse; }
+    button, .botao-secundario { width: 100%; text-align: center; }
+}

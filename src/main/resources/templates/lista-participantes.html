@@ -36,11 +36,11 @@
                                 <td th:text="${participante.documento}"></td>
                                 <td class="acoes-tabela">
                                     <a class="acao editar" th:href="@{/participantes/editar/{id}(id=${participante.id})}">
-                                Editar
+                                        Editar
                                     </a>
                                     <a class="acao excluir" th:href="@{/participantes/excluir/{id}(id=${participante.id})}"
                                        onclick="return confirm('Deseja realmente excluir este participante?');">
-                                Excluir
+                                        Excluir
                                     </a>
                                 </td>
                             </tr>
@@ -53,6 +53,9 @@
                 <p>Adicione pessoas para manter seus dados organizados.</p>
                 <a class="botao-novo" th:href="@{/participantes/novo}">Cadastrar participante</a>
             </section>
+            <a class="botao" th:href="@{/eventos}">
+                Eventos
+            </a>
         </main>
     </body>
 </html>

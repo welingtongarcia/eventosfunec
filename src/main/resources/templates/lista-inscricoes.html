@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscrições</title>
+        <link rel="stylesheet" th:href="@{/css/lista-inscricoes.css}">
+    </head>
+    <body>
+        <main class="pagina-inscricoes">
+            <div class="cabecalho">
+                <div>
+                    <p class="eyebrow">Controle de eventos</p>
+                    <h1>Inscrições realizadas</h1>
+                    <p class="subtitulo">Participantes vinculados aos eventos.</p>
+                </div>
+                <a class="botao-novo" th:href="@{/inscricoes/nova}">+ Nova inscrição</a>
+            </div>
+            <section class="cartao-lista" th:unless="${#lists.isEmpty(inscricoes)}">
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Evento</th>
+                                <th>Participante</th>
+                                <th>Data da inscrição</th>
+                                <th class="coluna-acoes">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="inscricao : ${inscricoes}">
+                                <td class="nome-evento" th:text="${inscricao.evento.titulo}"></td>
+                                <td th:text="${inscricao.participante.nome}"></td>
+                                <td th:text="${#temporals.format(inscricao.dataInscricao, 'dd/MM/yyyy HH:mm')}"></td>
+                                <td class="acoes-tabela">
+                                    <a class="acao excluir" th:href="@{/inscricoes/excluir/{id}(id=${inscricao.id})}"
+                                       onclick="return confirm('Deseja excluir esta inscrição?');">Excluir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section th:if="${#lists.isEmpty(inscricoes)}" class="vazio">
+                <h2>Nenhuma inscrição cadastrada</h2>
+                <p>Crie a primeira inscrição para vincular participantes aos eventos.</p>
+                <a class="botao-novo" th:href="@{/inscricoes/nova}">Nova inscrição</a>
+            </section>
+            <nav class="navegacao">
+                <a th:href="@{/eventos}">Eventos</a>
+                <a th:href="@{/participantes}">Participantes</a>
+            </nav>
+        </main>
+    </body>
+</html>

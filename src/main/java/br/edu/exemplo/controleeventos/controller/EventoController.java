@@ -18,7 +18,7 @@ public class EventoController {
         this.eventoService = eventoService;
     }
 
-    @GetMapping("/eventos")
+    @GetMapping({"/", "/eventos"})
     public String listarEventos(Model model) {
         model.addAttribute("eventos", eventoService.listarTodos()
         );
