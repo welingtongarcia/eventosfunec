@@ -27,6 +27,7 @@
                                 <th>Horário</th>
                                 <th>Local</th>
                                 <th>Vagas</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,15 +38,17 @@
                                 <td th:text="${evento.hora}"></td>
                                 <td th:text="${evento.local}"></td>
                                 <td><span class="vagas" th:text="${evento.quantidadeVagas}"></span></td>
-                                <td>
-                                    <a class="botao editar" th:href="@{/eventos/editar/{id}(id=${evento.id})}">
-                                        Editar
-                                    </a>
-                                    <a
-                                        class="botao excluir" th:href="@{/eventos/excluir/{id}(id=${evento.id})}"
-                                        onclick="return confirm('Deseja realmente excluir este evento?');">
-                                        Excluir
-                                    </a>
+                                <td class="acoes-evento">
+                                    <form th:action="@{/eventos/editar/{id}(id=${evento.id})}" method="get">
+                                        <button class="botao-acao editar" type="submit">Editar</button>
+                                    </form>
+                                    <form th:action="@{/eventos/excluir/{id}(id=${evento.id})}" method="get"
+                                          onsubmit="return confirm('Deseja realmente excluir este evento?');">
+                                        <button class="botao-acao excluir" type="submit">Excluir</button>
+                                    </form>
+                                    <form th:action="@{/eventos/{id}/inscritos(id=${evento.id})}" method="get">
+                                        <button class="botao-acao inscritos" type="submit">Inscritos</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

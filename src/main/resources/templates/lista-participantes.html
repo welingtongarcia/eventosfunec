@@ -35,13 +35,13 @@
                                 <td th:text="${participante.telefone}"></td>
                                 <td th:text="${participante.documento}"></td>
                                 <td class="acoes-tabela">
-                                    <a class="acao editar" th:href="@{/participantes/editar/{id}(id=${participante.id})}">
-                                        Editar
-                                    </a>
-                                    <a class="acao excluir" th:href="@{/participantes/excluir/{id}(id=${participante.id})}"
-                                       onclick="return confirm('Deseja realmente excluir este participante?');">
-                                        Excluir
-                                    </a>
+                                    <form th:action="@{/participantes/editar/{id}(id=${participante.id})}" method="get">
+                                        <button class="acao editar" type="submit">Editar</button>
+                                    </form>
+                                    <form th:action="@{/participantes/excluir/{id}(id=${participante.id})}" method="get"
+                                          onsubmit="return confirm('Deseja realmente excluir este participante?');">
+                                        <button class="acao excluir" type="submit">Excluir</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

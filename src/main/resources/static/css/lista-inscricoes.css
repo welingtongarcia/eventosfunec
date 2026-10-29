@@ -27,7 +27,8 @@ tbody tr:hover { background: #f7faff; }
 .nome-evento { font-weight: 700; }
 .coluna-acoes { text-align: right; }
 .acoes-tabela { text-align: right; }
-.acao { display: inline-block; padding: 7px 10px; border-radius: 6px; font-size: .85rem; font-weight: 700; text-decoration: none; }
+.acoes-tabela form { margin: 0; }
+.acao { display: inline-block; padding: 7px 10px; border: 0; border-radius: 6px; cursor: pointer; font: inherit; font-size: .85rem; font-weight: 700; }
 .excluir { background: #fee2e2; color: #b91c1c; }
 .acao:hover { filter: brightness(.95); }
 .vazio { padding: 58px 24px; text-align: center; }

@@ -51,6 +51,12 @@
                             <input id="quantidadeVagas" type="number" min="1" th:field="*{quantidadeVagas}" placeholder="0">
                             <span class="erro" th:errors="*{quantidadeVagas}"></span>
                         </div>
+                        <label>Status</label>
+                        <select th:field="*{status}">
+                            <option value="ABERTO">Aberto</option>
+                            <option value="ENCERRADO">Encerrado</option>
+                            <option value="CANCELADO">Cancelado</option>
+                        </select>
                     </div>
                     <button
                         type="submit"

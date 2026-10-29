@@ -33,8 +33,10 @@
                                 <td th:text="${inscricao.participante.nome}"></td>
                                 <td th:text="${#temporals.format(inscricao.dataInscricao, 'dd/MM/yyyy HH:mm')}"></td>
                                 <td class="acoes-tabela">
-                                    <a class="acao excluir" th:href="@{/inscricoes/excluir/{id}(id=${inscricao.id})}"
-                                       onclick="return confirm('Deseja excluir esta inscrição?');">Excluir</a>
+                                    <form th:action="@{/inscricoes/excluir/{id}(id=${inscricao.id})}" method="get"
+                                          onsubmit="return confirm('Deseja excluir esta inscrição?');">
+                                        <button class="acao excluir" type="submit">Excluir</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

@@ -108,6 +108,30 @@ tbody tr:hover {
     text-align: center;
 }
 
+.acoes-evento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 245px;
+}
+
+.acoes-evento form, .acoes-tabela form { margin: 0; }
+
+.botao-acao, .acao {
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    padding: 8px 10px;
+}
+
+.botao-acao:hover, .acao:hover { filter: brightness(.95); }
+.editar { background: #dbeafe; color: #1d4ed8; }
+.excluir { background: #fee2e2; color: #b91c1c; }
+.inscritos { background: #e0e7ff; color: #4338ca; }
+
 .estado-vazio {
     padding: 58px 24px;
     text-align: center;

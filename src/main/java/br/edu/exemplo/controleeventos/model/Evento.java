@@ -24,9 +24,9 @@ public class Evento {
     @NotNull(message = "A quantidade de vagas é obrigatória")
     @Min(value = 1, message = "O evento deve possuir pelo menos uma vaga")
     private Integer quantidadeVagas;
-    
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status = "ABERTO";
+    private StatusEvento status = StatusEvento.ABERTO;
 
     public Long getId() {
         return id;
@@ -84,11 +84,11 @@ public class Evento {
         this.quantidadeVagas = quantidadeVagas;
     }
 
-    public String getStatus() {
+    public StatusEvento getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusEvento status) {
         this.status = status;
     }
 

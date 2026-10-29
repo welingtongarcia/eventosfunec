@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscritos do evento</title>
+        <link rel="stylesheet" th:href="@{/css/inscritos-evento.css}">
+    </head>
+    <body>
+        <main class="pagina-inscritos">
+            <a class="voltar" th:href="@{/eventos}">&larr; Voltar para eventos</a>
+            <header class="cabecalho">
+                <div>
+                    <p class="eyebrow">Participantes do evento</p>
+                    <h1 th:text="${evento.titulo}">Evento</h1>
+                    <p class="subtitulo">Acompanhe as vagas preenchidas e as inscrições realizadas.</p>
+                </div>
+                <a class="botao-novo" th:href="@{/inscricoes/nova}">+ Nova inscrição</a>
+            </header>
+
+            <section class="resumo-vagas">
+                <div><span>Vagas</span><strong th:text="${evento.quantidadeVagas}">0</strong></div>
+                <div><span>Inscritos</span><strong th:text="${totalInscritos}">0</strong></div>
+                <div><span>Disponíveis</span><strong th:text="${evento.quantidadeVagas - totalInscritos}">0</strong></div>
+            </section>
+
+            <section class="cartao-lista" th:unless="${#lists.isEmpty(inscricoes)}">
+                <div class="tabela-responsiva">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Participante</th>
+                                <th>E-mail</th>
+                                <th>Data da inscrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="inscricao : ${inscricoes}">
+                                <td class="nome-participante" th:text="${inscricao.participante.nome}"></td>
+                                <td th:text="${inscricao.participante.email}"></td>
+                                <td th:text="${#temporals.format(inscricao.dataInscricao, 'dd/MM/yyyy HH:mm')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="vazio" th:if="${#lists.isEmpty(inscricoes)}">
+                <h2>Nenhum participante inscrito</h2>
+                <p>Use o botão acima para adicionar a primeira inscrição.</p>
+            </section>
+        </main>
+    </body>
+</html>

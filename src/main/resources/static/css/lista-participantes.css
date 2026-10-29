@@ -28,7 +28,8 @@ tbody tr:hover { background: #f7faff; }
 .nome-participante { font-weight: 700; }
 .coluna-acoes { text-align: right; }
 .acoes-tabela { display: flex; justify-content: flex-end; gap: 8px; }
-.acao { padding: 7px 10px; border-radius: 6px; font-size: .85rem; font-weight: 700; text-decoration: none; }
+.acoes-tabela form { margin: 0; }
+.acao { padding: 7px 10px; border: 0; border-radius: 6px; cursor: pointer; font: inherit; font-size: .85rem; font-weight: 700; }
 .editar { background: #dbeafe; color: #1d4ed8; }
 .excluir { background: #fee2e2; color: #b91c1c; }
 .acao:hover { filter: brightness(.95); }

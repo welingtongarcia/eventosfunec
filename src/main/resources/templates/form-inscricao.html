@@ -6,6 +6,7 @@
         <link rel="stylesheet" th:href="@{/css/form-inscricao.css}">
     </head>
     <body>
+        <div th:if="${erro != null}" class="mensagem-erro" th:text="${erro}"> </div>
         <main class="pagina-inscricao">
             <section class="cartao-inscricao">
                 <a class="voltar" th:href="@{/inscricoes}">&larr; Voltar para inscrições</a>
