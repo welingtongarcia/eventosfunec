@@ -1,0 +1,37 @@
+.pagina-relatorio {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.indicadores article {
+    padding: 20px;
+    border-radius: 12px;
+    background: #eaf3ff;
+}
+.indicadores span {
+    display: block;
+    color: #1d5fa7;
+}
+.indicadores strong {
+    font-size: 30px;
+    color: #123c69;
+}
+table {
+    width: 100%;
+    margin-top: 24px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #d7e1ef;
+    text-align: left;
+}
+th {
+    background: #123c69;
+    color: white;
+}

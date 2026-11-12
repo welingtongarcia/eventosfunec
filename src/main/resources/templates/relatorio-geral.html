@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório geral</title>
+    <link rel="stylesheet" th:href="@{/css/relatorio-geral.css}">
+</head>
+<body>
+    <main class="pagina-relatorio">
+        <h1>Relatório geral</h1>
+
+        <section class="indicadores">
+            <article>
+                <span>Eventos</span>
+                <strong th:text="${totalEventos}">0</strong>
+            </article>
+
+            <article>
+                <span>Participantes</span>
+                <strong th:text="${totalParticipantes}">0</strong>
+            </article>
+
+            <article>
+                <span>Inscrições</span>
+                <strong th:text="${totalInscricoes}">0</strong>
+            </article>
+        </section>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Vagas</th>
+                    <th>Inscritos</th>
+                    <th>Disponíveis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ocupacao : ${ocupacoes}">
+                    <td th:text="${ocupacao.titulo}"></td>
+                    <td th:text="${ocupacao.vagas}"></td>
+                    <td th:text="${ocupacao.inscritos}"></td>
+                    <td th:text="${ocupacao.disponiveis}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
